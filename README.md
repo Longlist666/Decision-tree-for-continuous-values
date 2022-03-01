@@ -5,9 +5,9 @@
 Decision Tree Algorithm wtitten in Python using NumPy. 
 
 ## Overview of the implementaion
-The Decision Tree algorithm implemented is using information gain as splitting criteria. The DT can handle categorical and continuous data. Parameters provided to the DT are number of Target labels and the threshold for classifing a feature as categorical, if number of unique values are below him. 
+The implemented decision tree algorithm uses the information gain as partitioning criterion. The DT can handle categorical and continuous data. The parameters provided to the DT are the number of class labels and the threshold for classifying a feature as categorical if the number of unique values is less than or equal to.
 
-The algorithm is only able to work with natural number classlabels starting by 0. 
+The algorithm can only work with class labels that are natural numbers and start with 0.
 
 ## Prerequisites
 
