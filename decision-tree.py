@@ -36,7 +36,7 @@ class DT():
         Parameters
         ----------
         number_of_target_label                  : int
-                                                  Contians the number of unique used classlables of the dataset. 
+                                                  Contians the number of unique used class labels of the dataset. 
         threshold_for_attribut_classification   : int
                                                   Contains the threshold for classifing a numerical feature as categorical. 
         """
@@ -52,7 +52,7 @@ class DT():
         X   : ndarray
               Contains the features. 
         y   : ndarray
-              Contains the Classlable
+              Contains the Class label
         """
         self.X_train = X
         self.Y_train = y
@@ -60,8 +60,8 @@ class DT():
 
     def kind_of_attribut(self, x):
         """
-        Lables the coloums of the imput as categorical or continuous.
-        All coloums are labeled as categorical data, if they contain a string 
+        Labels the coloums of the imput as categorical or continuous.
+        All coloums are marked as categorical data, if they contain a string 
         value or contain <= than in self.thr_classification specified unique values.
         An categorical coloum is marked as False and a continuous coloum as True.
         Parameters
@@ -85,11 +85,11 @@ class DT():
         Parameters
         ----------
         y        : array_like
-                   Contains the classattributs 
+                   Contains the class labels.  
         Returns
         -------
         label_HP : int
-                   Is one of the possible classlabels  
+                   Is the class label with highest probability.  
         """
         values, counts = np.unique(y, return_counts=True)
         return values[np.argmax(counts)]
@@ -97,8 +97,8 @@ class DT():
 
     def built_tree(self):
         """
-        Calls the function that builds the decision tree. Determinds if the features 
-        are continuounis or categorical. 
+        Calls the function that builds the decision tree. Determines whether the features 
+        are continuous or categorical. 
         Returns
         -------
         dt : (Nodeobject, np.array([bool]))
@@ -114,10 +114,9 @@ class DT():
 
         def help_built_tree(x_categorical, x_continuous, all_y, parent_node):
             """
-            Builds the dt searches for the best splitt in continuous and categorical data,
-            for the trainingsdata. If a splitt is done, the trainingsdata is distibuted acordingly him 
-            and new childrennodes are created. This nodes are splitt to, 
-            until only on class Attribute is left and a leaf that holds this Value is created.   
+            Builds the dt, searches for the best splitt in continuous and categorical data (for the training data). 
+            In the case of a split, the training data is distributed accordingly and new child/ren node/s are created.
+            These nodes are splitt until only one class label remains or one sampel -> leaf that holds this value is created.   
             Parameters
             ----------
             x_categorical : ndarray
@@ -367,8 +366,7 @@ class DT():
     
     def predict(self, x_test, y_test, root, kind_of_features):
         predicted_labels = [self._predict(x, root, kind_of_features) for x in x_test]
-        return 100/ np.shape(y_test)[0] * sum([ 1 for y_test_label, predicted_label in zip (y_test, predicted_labels ) 
-                                                                                    if y_test_label == predicted_label]) 
+        return 100/ np.shape(y_test)[0] * sum([ 1 for y_test_label, predicted_label in zip (y_test, predicted_labels ) if y_test_label == predicted_label]) 
 
     def _predict(self, x, root, kind_of_features):
         """
