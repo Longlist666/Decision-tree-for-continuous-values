@@ -343,7 +343,7 @@ class DT():
         if p_plus == 0 or p_minus == 0 :
             return 0
         else:
-            return - (p_plus / (p_plus + p_minus)) * np.log2(p_plus / (p_plus + p_minus)) - (p_minus / (p_plus + p_minus)) * np.log2(p_minus / (p_plus + p_minus))
+            return -(p_plus/ (p_plus+p_minus)) * np.log2(p_plus/ (p_plus+p_minus)) -(p_minus/ (p_plus+p_minus)) * np.log2(p_minus/ (p_plus+p_minus))
 
 
     def information_Gain(self,entropy, num_of_rows, num_geater_than_t, num_smaller_equ_as_t, sub_entropy_0, sub_entropy_1):
