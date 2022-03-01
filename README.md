@@ -9,8 +9,14 @@ The Decision Tree algorithm implemented is using information gain as splitting c
 
 The algorithm is only able to work with natural number classlabels starting by 0. 
 
+## Prerequisites
 
-![equation](http://www.sciweavers.org/tex2img.php?eq=1%2Bsin%28mc%5E2%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)
+- `Python ≥3.6.0`
+- `Numpy`
 
-![equation](http://www.sciweavers.org/tex2img.php?eq=%5Cint_%7B0%7D%5E%7B%5Cpi%7D%20%5Csin%20x%20%5C%2C%20dx%20%3D%202&bc=Black&fc=White&im=jpg&fs=12&ff=arev&edit=0)
-kkp
+<!-- LICENSE -->
+## License
+
+Distributed under the Apache License 2.0 License. See `LICENSE.txt` for more information.
+
+
