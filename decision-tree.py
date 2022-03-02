@@ -156,7 +156,7 @@ class DT():
                         help_built_tree(x_cate, x_con, y, new_parentnode)
                     i+=1
 
-            else:
+            elif best_splitt_con[1] != None:
                 _, threshold, feature, all_x_g, x_cate_g, all_y_g, all_x_sEq, x_cate_sEq, all_y_sEq = best_splitt_con
                 parent_node.threshold = threshold
                 parent_node.feature_index = feature
@@ -165,13 +165,13 @@ class DT():
                 if len(all_y_g) == 0 or len(all_y_sEq) == 0:
 
                     if len(all_y_g) == len(all_y_sEq) == 0:
-                        parent_node.children = np.array([None, feature, self.choose_best_random_label(all_y)])
+                        parent_node.children = np.array([[None, feature, self.choose_best_random_label(all_y)]])
                         
                     elif len(all_y_g) == 0:
-                        parent_node.children = np.array([None, feature, all_y_sEq[0]])
+                        parent_node.children = np.array([[None, feature, all_y_sEq[0]]])
                         
                     else:
-                        parent_node.children = np.array([None, feature, all_y_g[0]])
+                        parent_node.children = np.array([[None, feature, all_y_g[0]]])
                         
                 elif np.all(all_y_g == all_y_g[0]) and np.all(all_y_sEq == all_y_sEq[0]): 
                     parent_node.children = np.array([[None, feature, all_y_sEq[0]], [None, feature, all_y_g[0]]])
@@ -282,7 +282,7 @@ class DT():
         """
         # inizialize highest_informationGain and best_split for the case no possible splitt ist found, 
         # in this case use the class attribute in all_y[1] as the child node of this branche 
-        highest_informationGain, best_split = -1, [-1,0,0,0,[all_y[0]],0,[all_y[1]]]
+        highest_informationGain, best_split = -1, [-1, None]
     
         # Go through all combinations of the class attributes 
         # e. g. class attibutes {0,1,2} => ({0}, {1,2}) ({1}, {0,2}) ({2}, {1,0})
